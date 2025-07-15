@@ -69,7 +69,7 @@ class Janela1:
                     for x in range(0,quantidade):#acrescentado o mesmo item várias vezes, de acordo com a quantidade
                         lista_itens.append((numero_pedido,item))
                     
-                    # Validação robusta para adicionar novo item
+                  # Validação robusta para adicionar novo item
                     while True:
                         adicionar_input = str(input('Adicionar novo item? (s-Sim, n-Nao): ')).lower().strip()
                         if adicionar_input in respostas_positivas:
@@ -79,7 +79,7 @@ class Janela1:
                             adicionar = 'n'
                             break
                         else:
-                            print('Resposta inválida! Digite "s" para Sim ou "n" para Não.')
+                            print('Resposta inválida! Por favor, digite uma resposta válida.')
                 
                 print('\n----------Finalizar pedido----------\n')
                 print(f'Numero do pedido: {numero_pedido}')
@@ -92,13 +92,22 @@ class Janela1:
                     print('Valor incorreto, recomeçando')
                     break
                 endereco = str(input('Endereco:'))
-                status_aux = int(input('status: 1-preparo, 2-pronto, 3-entregue: '))
-                if status_aux == 1:
-                    status = 'preparo'
-                if status_aux == 2:
-                    status = 'pronto'
-                else:
-                    status = 'entregue'
+                while True:
+                    try:
+                        status_aux = int(input('status: 1-preparo, 2-pronto, 3-entregue: '))
+                        if status_aux == 1:
+                            status = 'preparo'
+                            break
+                        elif status_aux == 2:
+                            status = 'pronto'
+                            break
+                        elif status_aux == 3:
+                            status = 'entregue'
+                            break
+                        else:
+                            print('Opção inválida! Digite apenas 1, 2 ou 3.')
+                    except ValueError:
+                        print('Entrada inválida! Digite apenas números (1, 2 ou 3).')
  
                 print(f'Valor Final: R${valor_total}')
                 data_hoje = date.today()
